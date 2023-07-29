@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .menu-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      #menu-button {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #menu {
+        position: absolute;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        display: none;
+      }
+
+      #menu a {
+        display: block;
+        padding: 5px;
+        color: #333;
+        text-decoration: none;
+      }
+
+      #menu a:hover {
+        background-color: #ddd;
+      }
+
+      /* 보여질 때 애니메이션 효과를 추가하고 싶다면 다음과 같이 설정합니다 */
+      .hidden {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-container">
+      <button id="menu-button">메뉴</button>
+      <div id="menu" class="hidden">
+        <!-- 메뉴 항목들을 추가하세요 -->
+        <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a>
+        <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a> <a href="#">메뉴 항목 1</a>
+        <a href="#">메뉴 항목 2</a>
+        <!-- 추가적인 메뉴 항목들을 원하는 만큼 추가하세요 -->
+      </div>
+    </div>
+  </body>
+  <script>
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+
+    menuButton.addEventListener('click', () => {
+      // 메뉴가 보여질 때와 숨겨질 때의 상태를 토글합니다.
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('visible');
+    });
+  </script>
+</html>
