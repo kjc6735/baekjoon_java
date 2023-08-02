@@ -1,4 +1,4 @@
-package p1954;
+// package p1954;
 
 import java.util.*;
 import java.io.*;
@@ -10,9 +10,10 @@ public class Test {
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws Exception {
-        System.setIn(new FileInputStream("p1954/input.txt"));
+        // System.setIn(new FileInputStream("p1954/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
+
         for (int i = 0; i < n; i++) {
             int idx = 1, dirIdx = 0, x = 0, y = 0, m = Integer.parseInt(br.readLine());
             while (idx <= m * m) {
