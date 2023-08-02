@@ -2,7 +2,9 @@ package Test;
 
 public class Main {
     public static void main(String[] args) {
-        String str = "01234";
-        System.out.println(Integer.valueOf(str.charAt(0) - '0'));
+        int a[] = { 1, 2, 3, 4, 5, 6 };
+        int arr[][] = { { 1, 2 }, { 3, 4 } };
+        int i = 0, k = 0;
+        System.out.println(arr[i++][k++]);
     }
 }
