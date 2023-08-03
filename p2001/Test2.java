@@ -15,7 +15,6 @@ public class Test2 {
             int m = Integer.parseInt(str[1]);
             for (int i = 0; i < n; i++) {
                 str = br.readLine().split(" ");
-                // arr[i][0] = Integer.parseInt(str[0]);
                 for (int k = 0; k < n; k++) {
                     arr[i][k] = Integer.parseInt(str[k]);
                     // arr[i][k] = arr[i][k - 1] + Integer.parseInt(str[k]);
@@ -34,7 +33,6 @@ public class Test2 {
                 }
             }
             System.out.println("#" + tc + " " + max);
-
         }
     }
 }

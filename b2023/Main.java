@@ -6,12 +6,10 @@ import java.io.*;
 public class Main {
     static StringBuilder sb = new StringBuilder();
     static int n;
-
     public static void main(String[] args) throws Exception {
         System.setIn(new FileInputStream("b2023/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
-        int arr[] = new int[n];
         find(1, 2);
         find(1, 3);
         find(1, 5);
@@ -21,24 +19,29 @@ public class Main {
     }
 
     static void find(int cnt, int result) {
-        if (cnt == n) {
-            boolean check = true;
-            for (int i = 1; result >= i; i *= 10) {
-                if (!isPrime(result / i)) {
-                    check = false;
-                }
-            }
+        if (n == cnt) {
+            if (isPrime(result))
+                sb.append(result).append("\n");
             return;
         }
-
-        for (int i = 1; i < 10; i += 2) {
-            find(cnt + 1, result * 10 + i);
+        if (isPrime(result)) {
+            find(cnt+1, result*10 + 1);
+            find(cnt+1, result*10 + 3);
+            find(cnt+1, result*10 + 5);
+            find(cnt+1, result*10 + 7);
+            find(cnt+1,result*10 + 9);
         }
     }
 
-    static boolean isPrime(int num) {
-        for (int i = 2; i * i <= num; i++) {
-            if (num % i == 0)
+    static boolean isPrime( int num2) {
+        if (num2 == 2 )
+            return true;
+        if (num2 % 2 == 0)
+            return false;
+        
+        int i ;
+        for ( i = 3; i * i <= num2; i+=2) {
+            if (num2 % i == 0)
                 return false;
         }
         return true;
