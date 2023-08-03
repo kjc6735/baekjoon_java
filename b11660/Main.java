@@ -16,11 +16,7 @@ public class Main {
         for (int i = 0; i < n && (str = br.readLine().split(" ")) != null; i++)
             for (int k = 0; k < n; k++)
                 arr[i + 1][k + 1] = Integer.parseInt(str[k]);
-        // 왼쪽 오른쪽 세팅
-        for (int k = 1; k <= n; k++)
-            arr[0][k] = arr[0][k] + arr[0][k - 1];
-        for (int k = 1; k <= n; k++)
-            arr[k][0] = arr[k][0] + arr[k - 1][0];
+
         for (int i = 1; i <= n; i++)
             for (int k = 1; k <= n; arr[i][k] = arr[i][k] + arr[i - 1][k] + arr[i][k - 1] - arr[i - 1][k - 1], k++) {
             }
