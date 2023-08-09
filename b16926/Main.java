@@ -30,60 +30,30 @@ public class Main {
                 arr[i][k] = Integer.parseInt(st.nextToken());
             }
         }
-
         int idx = 0;
-        while (idx < m / 2 && idx < n / 2) {
-            int size = getSize(idx, n, m);
+        while (idx < m / 2 || idx < n / 2) {
+            int x = idx;
+            int y = idx;
+            int dirIdx = 0;
+            queue[idx].add(arr[x][y]);
+            int size = (n - idx * 2) + (m - idx * 2) - ((n - (idx - 1) * 2) + (m - (idx - 1) * 2));
 
-            queue[idx].add(arr[idx][idx]);
-            get(idx, size, n, m, true, arr, queue[idx]);
-
-            for (int i = 0; i < r % size; i++)
-                queue[idx].add(queue[idx].poll());
-
-            arr[idx][idx] = queue[idx].poll();
-            get(idx, size, n, m, false, arr, queue[idx]);
-
-            idx++;
-        }
-
-        for (int i = 0; i < n; i++) {
-            for (int k = 0; k < m; k++) {
-                sb.append(arr[i][k]).append(" ");
+            for (int i = 0; i < size; i++) {
+                int dx = x + dir[dirIdx][0];
+                int dy = y + dir[dirIdx][1];
+                if (dx < idx || dy < idx || dx >= n - idx || dy >= m - idx) {
+                    dirIdx++;
+                }
+                x = x + dir[dirIdx][0];
+                y = y + dir[dirIdx][1];
+                queue[idx].add(arr[x][y]);
             }
-            sb.append("\n");
         }
-        System.out.print(sb.toString());
-    }
-
-    static void get(int idx, int size, int n, int m, boolean type, int[][] arr, Queue<Integer> queue) {
-        int x = idx;
-        int y = idx;
-        int dirIdx = 0;
-        for (int i = 0; i < size - 1; i++) {
-            int dx = x + dir[dirIdx % 4][0];
-            int dy = y + dir[dirIdx % 4][1];
-
-            if (dx < idx || dy < idx || dx > n - idx - 1 || dy > m - idx - 1)
-                dirIdx++;
-
-            x = x + dir[dirIdx % 4][0];
-            y = y + dir[dirIdx % 4][1];
-
-            assign(queue, arr, x, y, type);
+        while (!queue[0].isEmpty()) {
+            System.out.println(queue[0].poll() + " ");
         }
-    }
+        // int idx = 0;
 
-    static int getSize(int idx, int n, int m) {
-        return (n - idx * 2) * (m - idx * 2) - ((n - (idx + 1) * 2) * (m - (idx + 1) * 2));
-    }
-
-    static void assign(Queue<Integer> queue, int arr[][], int x, int y, boolean type) {
-        if (type) {
-            queue.add(arr[x][y]);
-        } else {
-            arr[x][y] = queue.poll();
-        }
     }
 
 }
