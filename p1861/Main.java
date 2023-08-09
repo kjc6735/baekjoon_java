@@ -30,7 +30,6 @@ public class Main {
             for (int i = 0; i < n; i++) {
                 for (int k = 0; k < n; k++) {
                     int r = fn(i, k, 0);
-                    System.out.print(r + " ");
                     if (ans <= r) {
                         if (ans < r) {
                             ans = r;
@@ -42,10 +41,9 @@ public class Main {
                         }
                     }
                 }
-                System.out.println();
 
             }
-            System.out.println("#" + tc + " " + (ans + 1) + " " + (arr[x][y]));
+            System.out.println("#" + tc + " " +  (arr[x][y])+ " "+(ans + 1));
             ans = 0;
         }
     }
