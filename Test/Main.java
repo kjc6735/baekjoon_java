@@ -13,7 +13,7 @@ public class Main {
         // Map<Node, Integer> map = new HashMap<>();
         // map.put(new Node(0, 0, 0), 1);
         // System.out.println(map.get(new Node(0, 0, 0)));
-        Integer.parseInt("-");
+        System.out.println();
     }
 
     static class Node {
