@@ -11,14 +11,19 @@ public class Main {
             { 0, -1 }
     };
     static int rDir[][] = {
-            { 1, 0 },
-            { 0, 1 },
-            { -1, 0 },
-            { 0, -1 }
+            {
+                0,1
+            }, {
+                1,0
+            }, {
+                0,-1
+            }, {
+                -1,0
+            }
     };
 
     static Queue<int[]> q = new LinkedList<>();
-    static int min;
+    static int min = Integer.MAX_VALUE;
     static int n;
     static int m;
     static int tmp[][];
@@ -84,6 +89,8 @@ public class Main {
             int arrMin = arrMin(tmp, n, m);
             if (min > arrMin)
                 min = arrMin;
+            // System.out.println(arrMin  + " " + min );
+            // print(n,m,tmp);
             return;
         }
 
@@ -117,7 +124,6 @@ public class Main {
             if (min > sum)
                 min = sum;
         }
-
         return min;
     }
 
@@ -150,7 +156,6 @@ public class Main {
             assign(queue, arr, x, y, type);
             q.add(new int[] { x, y });
         }
-
     }
 
     static int getSize(int n, int m) {

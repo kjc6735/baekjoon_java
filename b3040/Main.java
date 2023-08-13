@@ -6,7 +6,7 @@ import java.io.*;
 public class Main {
     static int arr[] = new int[9];
     static int ans = 0;
-
+    static boolean check = false;
     public static void main(String[] args) throws Exception {
         System.setIn(new FileInputStream("b3040/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,13 +18,17 @@ public class Main {
     }
 
     static void find(int idx, int cnt, int sum, boolean visited[]) {
+        if(check == true) return;
+
         if (cnt == 7) {
             if (sum == 100) {
+                check = true;
                 for (int i = 0; i < 9; i++) {
                     if (!visited[i])
                         continue;
                     System.out.println(arr[i]);
                 }
+                return ;
             }
         }
 

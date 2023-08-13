@@ -40,7 +40,6 @@ public class Main {
 
     static void find(int idx, int cnt, boolean visited[]) {
         if (cnt == m) {
-            System.out.println(Arrays.toString(visited));
             int s = 0;
             for (int k = 0; k < home.size(); k++) {
                 int tmp = Integer.MAX_VALUE;
@@ -48,7 +47,7 @@ public class Main {
                 for (int i = 0; i < chick.size(); i++) {
                     if (!visited[i])
                         continue;
-                    int result = Math.abs(home.get(i).x - chick.get(i).x) + Math.abs(home.get(i).y - chick.get(i).y);
+                    int result = Math.abs(home.get(k).x - chick.get(i).x) + Math.abs(home.get(k).y - chick.get(i).y);
                     if (tmp > result)
                         tmp = result;
                 }
@@ -56,21 +55,44 @@ public class Main {
             }
             if (min > s)
                 min = s;
-            System.out.println(Arrays.toString(visited) + " " + min);
-
             return;
         }
-
-        for (int i = 0; i < chick.size(); i++) {
-            if (visited[i])
-                continue;
-
-            visited[i] = true;
-            find(idx + 1, cnt + 1, visited);
-            visited[i] = false;
-        }
-
+        if(cnt < m && idx == chick.size()) return ;
+        visited[idx] = true;
+        find(idx + 1, cnt + 1, visited);
+        visited[idx] = false;
+        find(idx + 1, cnt, visited);
     }
+
+    // static void find(int idx, int cnt, boolean visited[]) {
+        // if (cnt == m) {
+        //     int s = 0;
+        //     for (int k = 0; k < home.size(); k++) {
+        //         int tmp = Integer.MAX_VALUE;
+
+        //         for (int i = 0; i < chick.size(); i++) {
+        //             if (!visited[i])
+        //                 continue;
+        //             int result = Math.abs(home.get(k).x - chick.get(i).x) + Math.abs(home.get(k).y - chick.get(i).y);
+        //             if (tmp > result)
+        //                 tmp = result;
+        //         }
+        //         s += tmp;
+        //     }
+        //     if (min > s)
+        //         min = s;
+        //     return;
+        // }
+
+    //     for (int i = 0; i < chick.size(); i++) {
+    //         if (visited[i])
+    //             continue;
+
+    //         visited[i] = true;
+    //         find(idx + 1, cnt + 1, visited);
+    //         visited[i] = false;
+    //     }
+    // }
 
     static int calc(int x, int y, int x1, int y1) {
         return Math.abs(x - x1) + Math.abs(y - y1);
@@ -84,6 +106,5 @@ public class Main {
             this.x = x;
             this.y = y;
         }
-
     }
 }
