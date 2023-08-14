@@ -8,6 +8,20 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "b1074.Main",
+      "projectName": "baekjoon_java_68ebf3ff"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "b2630.Main",
+      "projectName": "baekjoon_java_68ebf3ff"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "b15686.Main",
       "projectName": "baekjoon_java_68ebf3ff"
     },
