@@ -64,35 +64,35 @@ public class Main {
         find(idx + 1, cnt, visited);
     }
 
-    // static void find(int idx, int cnt, boolean visited[]) {
-        // if (cnt == m) {
-        //     int s = 0;
-        //     for (int k = 0; k < home.size(); k++) {
-        //         int tmp = Integer.MAX_VALUE;
+    static void find(int idx, int cnt, boolean visited[]) {
+        if (cnt == m) {
+            int s = 0;
+            for (int k = 0; k < home.size(); k++) {
+                int tmp = Integer.MAX_VALUE;
 
-        //         for (int i = 0; i < chick.size(); i++) {
-        //             if (!visited[i])
-        //                 continue;
-        //             int result = Math.abs(home.get(k).x - chick.get(i).x) + Math.abs(home.get(k).y - chick.get(i).y);
-        //             if (tmp > result)
-        //                 tmp = result;
-        //         }
-        //         s += tmp;
-        //     }
-        //     if (min > s)
-        //         min = s;
-        //     return;
-        // }
+                for (int i = 0; i < chick.size(); i++) {
+                    if (!visited[i])
+                        continue;
+                    int result = Math.abs(home.get(k).x - chick.get(i).x) + Math.abs(home.get(k).y - chick.get(i).y);
+                    if (tmp > result)
+                        tmp = result;
+                }
+                s += tmp;
+            }
+            if (min > s)
+                min = s;
+            return;
+        }
 
-    //     for (int i = 0; i < chick.size(); i++) {
-    //         if (visited[i])
-    //             continue;
+        for (int i = 0; i < chick.size(); i++) {
+            if (visited[i])
+                continue;
 
-    //         visited[i] = true;
-    //         find(idx + 1, cnt + 1, visited);
-    //         visited[i] = false;
-    //     }
-    // }
+            visited[i] = true;
+            find(idx + 1, cnt + 1, visited);
+            visited[i] = false;
+        }
+    }
 
     static int calc(int x, int y, int x1, int y1) {
         return Math.abs(x - x1) + Math.abs(y - y1);
