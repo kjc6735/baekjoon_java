@@ -29,19 +29,17 @@ public class Main {
         }
 
         for (int i = 0; i < r; i++) {
-            // if (find(i, 0))
-            // cnt++;
-            find(i, 0);
+            
+            if (fn(i, 0))
+                cnt++;
         }
         System.out.println(cnt);
     }
 
-    static void find(int xx, int yy) {
+    static boolean fn(int xx, int yy) {
         if (yy == c - 1) {
-            cnt++;
-            return;
+            return true;
         }
-
         for (int i = 0; i < 3; i++) {
             int x = xx + dir[i][0];
             int y = yy + dir[i][1];
@@ -52,9 +50,13 @@ public class Main {
                 continue;
 
             arr[x][y] = '#';
-            find(x, y);
-            arr[x][y] = '.';
+            if (fn(x, y)) {
+                return true;
+            } else {
+                arr[x][y] = '.';
+            }
         }
+        return false;
     }
 
     static boolean check(int x, int y) {
