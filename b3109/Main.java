@@ -23,13 +23,12 @@ public class Main {
         r = Integer.parseInt(st.nextToken());
         c = Integer.parseInt(st.nextToken());
         arr = new char[r][c];
-        visited = new boolean[r][c];
         for (int i = 0; i < r; i++) {
             arr[i] = br.readLine().toCharArray();
         }
 
         for (int i = 0; i < r; i++) {
-            
+
             if (fn(i, 0))
                 cnt++;
         }
@@ -52,8 +51,6 @@ public class Main {
             arr[x][y] = '#';
             if (fn(x, y)) {
                 return true;
-            } else {
-                arr[x][y] = '.';
             }
         }
         return false;
