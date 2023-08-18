@@ -13,7 +13,18 @@ public class Main {
         // Map<Node, Integer> map = new HashMap<>();
         // map.put(new Node(0, 0, 0), 1);
         // System.out.println(map.get(new Node(0, 0, 0)));
-        System.out.println();
+        // Set<Integer> set = new HashSet<>();
+        // set.add(1);
+
+        // set.remove(2);
+        // System.out.println();
+
+        Set<Node> set = new HashSet<>();
+        set.add(new Node(10, 20));
+
+        set.add(new Node(10, 20));
+
+        System.out.println(set.size());
     }
 
     static class Node {
@@ -29,6 +40,21 @@ public class Main {
         public Node(int x, int y, int cnt) {
             this(x, y);
             this.cnt = cnt;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj)
+                return true;
+            Node node = (Node) obj;
+            if (this.x == node.x && this.y == node.y)
+                return true;
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
         }
     }
 }
