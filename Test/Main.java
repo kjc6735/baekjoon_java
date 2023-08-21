@@ -19,12 +19,27 @@ public class Main {
         // set.remove(2);
         // System.out.println();
 
-        Set<Node> set = new HashSet<>();
-        set.add(new Node(10, 20));
+        // Set<Node> set = new HashSet<>();
+        // set.add(new Node(10, 20));
 
-        set.add(new Node(10, 20));
+        // set.add(new Node(10, 20));
 
-        System.out.println(set.size());
+        // System.out.println(set.size());
+
+        // List<Integer> list = new LinkedList<>();
+
+        // System.out.println(list.get(200));
+
+        TreeSet<Integer> tree = new TreeSet<>();
+
+        tree.add(10);
+        tree.add(15);
+        tree.add(20);
+
+        tree.add(22);
+        for (int a : tree) {
+            System.out.println(a);
+        }
     }
 
     static class Node {
