@@ -43,29 +43,34 @@ public class DisjponTest {
     }
 
     public static void main(String[] args) {
-        N = 5;
-        make();
-        System.out.println(Arrays.toString(parents));
-        System.out.println(union(0, 1));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(union(2, 1));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(union(3, 2));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(union(4, 3));
-        System.out.println(Arrays.toString(parents));
+        // N = 5;
+        // make();
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(union(0, 1));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(union(2, 1));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(union(3, 2));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(union(4, 3));
+        // System.out.println(Arrays.toString(parents));
 
-        System.out.println("=================find=================");
-        System.out.println(Arrays.toString(parents));
-        System.out.println(find(4));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(find(3));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(find(2));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(find(0));
-        System.out.println(Arrays.toString(parents));
-        System.out.println(find(1));
-        System.out.println(Arrays.toString(parents));
+        // System.out.println("=================find=================");
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(find(4));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(find(3));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(find(2));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(find(0));
+        // System.out.println(Arrays.toString(parents));
+        // System.out.println(find(1));
+        // System.out.println(Arrays.toString(parents));
+
+        int a[] = new int[] { 1, 2, 3, 4, 5 };
+        int b[] = Arrays.copyOf(a, a.length);
+        b[0] = 100;
+        System.out.println(Arrays.toString(a) + " " + Arrays.toString(b));
     }
 }

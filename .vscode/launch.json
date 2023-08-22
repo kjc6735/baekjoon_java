@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "b15683.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
       "name": "DisjponTest",
       "request": "launch",
       "mainClass": "DisjoinSetTest.DisjponTest",
