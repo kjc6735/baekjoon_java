@@ -8,6 +8,48 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "b1197.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Solution",
+      "request": "launch",
+      "mainClass": "p1238.Solution",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "b2504.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "b18311.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Solution",
+      "request": "launch",
+      "mainClass": "p3289.Solution",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "p3289.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "b15683.Main",
       "projectName": "baekjoon_java_fc43568b"
     },
