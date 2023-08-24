@@ -2,20 +2,35 @@ package b17281;
 
 public class Test {
     public static void main(String[] args) {
+        int t = 10;
+        System.out.println((t++)%10);
+    }
 
-        int is = 1 << 3;
-        int position = 10;
-        int currScore = 0;
+    static boolean np(int[] p) {
+        int N = p.length;
+        int i = N - 1;
 
-        position += 1;
-        // 루타만큼 밀면서 점수 득점하기
-        for (int i = 0; i < 3; i++) {
-            if ((is & (position)) != 0)
-                currScore++;
-            position = position << 1;
-        }
-        position = position & ((1 << 4) - 1);
-        System.out.println(currScore);
-        System.out.println(position);
+        while (i > 0 && p[i - 1] >= p[i])
+            --i;
+        if (i == 0)
+            return false;
+
+        int j = N - 1;
+        while (p[i - 1] >= p[j])
+            --j;
+
+        swap(p, i - 1, j);
+
+        int k = N - 1;
+        while (i < k)
+            swap(p, i++, k--);
+
+        return true;
+    }
+
+    static void swap(int p[], int a, int b) {
+        int tmp = p[a];
+        p[a] = p[b];
+        p[b] = tmp;
     }
 }

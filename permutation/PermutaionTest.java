@@ -15,7 +15,10 @@ public class PermutaionTest {
 
         
         int cnt = 0;
-        while(++cnt <= r) p[n-cnt] = 1;
+        while (++cnt <= r)
+            p[n - cnt] = 1;
+        
+            
         do {
             
             for (int i = 0; i < n; i++) {
