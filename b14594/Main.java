@@ -5,12 +5,12 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        // System.setIn(new FileInputStream("b14594/input.txt"));
+        System.setIn(new FileInputStream("b14594/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
         int m = Integer.parseInt(br.readLine());
-        boolean arr[] = new boolean[n+1];
+        boolean arr[] = new boolean[n + 1];
         for (int i = 0; i < m; i++) {
             String str[] = br.readLine().split(" ");
             int a = Integer.parseInt(str[0]);
