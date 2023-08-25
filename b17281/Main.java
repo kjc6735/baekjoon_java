@@ -1,15 +1,13 @@
-package b17281;
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
 
-    static int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+    static int arr[] = { 1, 2, 3, 0, 4, 5, 6, 7, 8 };
     static int max = 0;
+    static int checkBit = 1 << 4 | 1 << 5 | 1 << 6 | 1 << 7;
 
     public static void main(String[] args) throws Exception {
-        System.setIn(new FileInputStream("b17281/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int game = Integer.parseInt(br.readLine());
@@ -24,28 +22,18 @@ public class Main {
             int position = 0;
             int totalScore = 0;
 
-            ArrayList<Integer> list = new ArrayList<>();
-            for (int i = 0; i < 9; i++) {
-                if (i == 3) {
-                    list.add(0);
-                } else if (i >= 4)
-                    list.add(arr[i - 1]);
-                else
-                    list.add(arr[i]);
-            }
             int idx = 0;
             for (int gameCnt = 0; gameCnt < game; gameCnt++) {
                 int outCnt = 0; // 아웃 갯수 끝나는 조건 3
-                position = 0; // 
+                position = 0; //
                 while (true) {
-                    int userIdx = list.get((idx++)%9 );
-                  
-                    position += 1; 
-                    
+                    int userIdx = arr[(idx++) % 9];
+
+                    position |= 1;
+
                     int currLuta = currGame[gameCnt][userIdx];
 
                     if (currLuta == 0) {
-                        position--;
                         outCnt++;
                         if (outCnt == 3)
                             break;
@@ -54,15 +42,9 @@ public class Main {
 
                     int currScore = 0;
 
-                    int is = 1 << 3;
+                    currScore += (Integer.bitCount((position << currLuta) & checkBit));
 
-                    for (int i = 0; i < currLuta; i++) {
-                        if ((is & (position)) != 0)
-                            currScore++;
-                        position = position << 1;
-                    }
-
-                    position = position & ((1 << 4) - 1);
+                    position = (position << currLuta) & ((1 << 4) - 1);
                     totalScore += currScore;
                 }
             }
@@ -77,24 +59,36 @@ public class Main {
     }
 
     static boolean np(int[] p) {
+
         int N = p.length;
         int i = N - 1;
-
-        while (i > 0 && p[i - 1] >= p[i])
+        while (i > 0 && ((i == 4 && p[i - 2] >= p[i] || i == 3 && true) || (i != 4 && i != 3 && p[i - 1] >= p[i])))
             --i;
+
         if (i == 0)
             return false;
 
-        int j = N - 1;
-        while (p[i - 1] >= p[j])
-            --j;
+        int end = i != 4 ? i - 1 : i - 2;
 
-        swap(p, i - 1, j);
+        int j = N - 1;
+
+        while (p[end] >= p[j])
+            j = j == 4 ? j - 2 : j - 1;
+
+        swap(p, end, j);
 
         int k = N - 1;
-        while (i < k)
-            swap(p, i++, k--);
+        while (true) {
+            if (i == 3)
+                i++;
+            if (k == 3)
+                k--;
 
+            if (i < k)
+                swap(p, i++, k--);
+            else
+                break;
+        }
         return true;
     }
 
