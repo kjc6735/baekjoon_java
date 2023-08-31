@@ -12,5 +12,14 @@ public class Main {
         arr = new int[N][N];
         int currSize = 2;
         
+        while(!pq.isEmpty()){
+            Edge edge = pq.poll();
+            
+            if(visited[edge.no]) continue;
+            visited[edge.no] = true;
+
+            
+
+        }
     }
 }
