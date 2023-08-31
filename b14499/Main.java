@@ -16,5 +16,9 @@ public class Main {
         int posY = Integer.parseInt(st.nextToken());
 
         int commCnt = Integer.parseInt(st.nextToken());
+
+        for (int i = 0; i < commCnt; i++) {
+            if()
+        }
     }
 }

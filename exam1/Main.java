@@ -13,15 +13,6 @@ public class Main {
         System.setIn(new FileInputStream("exam1/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        N = Integer.parseInt(br.readLine());
-        if (N == 1 || N == 2) {
-            System.out.println(N == 1 ? 2 : 3);
-            return;
-        }
-        find(0, YELLOW, BLUE);
-        find(0, YELLOW, BLUE);
-        find(0, BLUE, YELLOW);
-
         System.out.println(cnt);
     }
 
