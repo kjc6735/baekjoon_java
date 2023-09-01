@@ -48,7 +48,7 @@ public class Main {
                         int y = curr.y + horse[k][1];
                         if (x < 0 || y < 0 || x >= N || y >= M)
                             continue;
-                        System.out.println(x + " " + y + " " + (curr.k - 1));
+                        // System.out.println(x + " " + y + " " + (curr.k - 1));
                         if (visited[x][y][curr.k - 1])
                             continue;
                         if (arr[x][y] == 1)
