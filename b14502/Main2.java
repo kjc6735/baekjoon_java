@@ -3,12 +3,12 @@ package b14502;
 import java.util.*;
 import java.io.*;
 
-public class Main {
-    static int n, m, arr[][], tmpCnt = 0, cnt = 0, max = 0, wallCnt = 0;
+public class Main2 {
+    static int tmpCnt = 0, cnt = 0, max = 0, wallCnt = 0;
     static int dir[][] = {
             { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 }
     };
-    static long visited2 = 0L;
+    static long visited2 = 0L, arr = 0L, n, m;
     static ArrayList<int[]> virus = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
@@ -16,51 +16,51 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str[] = br.readLine().split(" ");
 
-        n = Integer.parseInt(str[0]);
-        m = Integer.parseInt(str[1]);
+        n = Long.parseLong(str[0]);
+        m = Long.parseLong(str[1]);
 
-        arr = new int[n][m];
         for (int i = 0; i < n; i++) {
             str = br.readLine().split(" ");
             for (int k = 0; k < m; k++) {
-                arr[i][k] = Integer.parseInt(str[k]);
-                if (arr[i][k] == 1)
-                    wallCnt += 1;
-                if (arr[i][k] == 2) {
+                long tmp = Long.parseLong(str[k]);
+                if (tmp != 0L)
+                    arr |= (1L << (i * m + k));
+
+                if (tmp == 1L)
+                    wallCnt++;
+                else if (tmp == 2L) {
                     virus.add(new int[] { i, k });
                 }
             }
         }
-        int size = n * m;
+        int size = (int) (n * m);
         for (int a = 0; a < size - 2; a++) {
-            if (arr[a / m][a % m] != 0)
+            if ((arr & (1L << a)) != 0)
                 continue;
-            arr[a / m][a % m] = 1;
+            arr |= (1L << a);
             for (int b = a + 1; b < size - 1; b++) {
-
-                if (arr[b / m][b % m] != 0)
+                if ((arr & (1L << b)) != 0)
                     continue;
-                arr[b / m][b % m] = 1;
+                arr |= (1L << b);
                 for (int c = b + 1; c < size; c++) {
-                    if (arr[c / m][c % m] != 0)
+                    if ((arr & (1L << c)) != 0)
                         continue;
-                    arr[c / m][c % m] = 1;
-                    cnt = virus.size();
+                    arr |= (1L << c);
+
                     for (int[] v : virus) {
                         find(v[0], v[1]);
                     }
-                    int tmpMax = size - wallCnt - cnt - 3;
-
+                    // 총 배열 크기 - 벽 갯수 - 방문 갯수 - 벽3개 - 기존 바이러스 갯수
+                    int tmpMax = size - wallCnt - Long.bitCount(visited2) - 3 - virus.size();
                     if (max < tmpMax)
                         max = tmpMax;
 
                     visited2 = 0L;
-                    cnt = 0;
-                    arr[c / m][c % m] = 0;
+                    arr ^= (1L << c);
                 }
-                arr[b / m][b % m] = 0;
+                arr ^= (1L << b);
             }
-            arr[a / m][a % m] = 0;
+            arr ^= (1L << a);
         }
 
         System.out.println(max);
@@ -71,13 +71,11 @@ public class Main {
             int x = xx + dir[i][0];
             int y = yy + dir[i][1];
 
-            if (x < 0 || y < 0 || x >= n || y >= m || arr[x][y] != 0
+            if (x < 0 || y < 0 || x >= n || y >= m || (arr & (1L << (x * m + y))) != 0
                     || (visited2 & (1L << (x * m + y))) != 0)
                 continue;
             visited2 |= (1L << (x * m + y));
-            cnt++;
             find(x, y);
         }
     }
-
 }
