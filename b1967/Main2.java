@@ -3,7 +3,7 @@ package b1967;
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class Main2 {
     static int N;
 
     static ArrayList<Node> arr[];
@@ -38,17 +38,15 @@ public class Main {
         int sum = 0;
         int max = 0;
         ArrayList<Node> tmpArr = arr[node.idx];
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+
         for(int i = 0; i < tmpArr.size(); i++){
           int tmp = find(tmpArr.get(i));
-          pq.add(tmp);
+           sum += tmp;
            if(max < tmp) {
             max = tmp;
            }
         }
-        for(int i = 0; i < 2; i++) {
-          if(!pq.isEmpty()) sum+= pq.poll(); 
-        }
+
         if(totalMax < sum) totalMax = sum;
 
         return max + node.value;

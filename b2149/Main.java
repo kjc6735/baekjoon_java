@@ -7,56 +7,32 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.setIn(new FileInputStream("b2149/input.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+        StringBuilder sb = new StringBuilder();
         char[] key = br.readLine().toCharArray();
-        Node[] nodes = new Node[key.length];
-        for (int i = 0; i < key.length; i++) {
-            nodes[i] = new Node(i, key[i]);
-        }
-        String str = br.readLine();
-
-        for (int i = 0; i < str.length(); i++) {
-            nodes[i % key.length].arr.add(str.charAt(i));
-        }
-
-        Arrays.sort(nodes);
-        boolean used[] = new boolean[key.length];
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int k = 0; k < key.length; k++) {
-            for (int c = 0; c < nodes.length; c++) {
-                if (nodes[c].key == key[k]) {
-                    if (used[c])
-                        continue;
-                    result.add(c);
-                    used[c] = true;
+        char[] sortedKey = new String(key).toCharArray();
+        Arrays.sort(sortedKey);
+        boolean visited[] = new boolean[key.length];
+        String hashStr = br.readLine();
+        char[][] result = new char[hashStr.length() / key.length][key.length];
+        for(int i = 0; i < key.length; i++) {
+            for(int k = 0 ; k < key.length; k++){
+                if(visited[k] ||  key[i] != sortedKey[k]) continue;
+                visited[k] = true;
+                for(int c = 0; c < (hashStr.length() / key.length); c++){
+             
+                    result[c][i] = hashStr.charAt(k*((hashStr.length() / key.length)) + c);
                 }
+                break;
             }
         }
-
-        for (int i = 0; i < key.length; i++) {
-            for (int k = 0; k < result.size(); k++) {
-                System.out.print(nodes[k].arr.get(i));
+        for(int i = 0; i < result.length; i++){
+            for(int k = 0; k < key.length; k++){
+                System.out.print(result[i][k]);
             }
         }
-    }
+ 
 
-    static class Node {
-        int index;
-        char key;
-        ArrayList<Character> arr = new ArrayList<>();
-
-        Node(int index, char key) {
-            this.index = index;
-            this.key = key;
-        }
-
-        // @Override
-        // public int compareTo(Node o) {
-        // if (this.key == o.key) {
-        // return this.index - o.index;
-        // }
-        // return this.key - o.key;
-        // }
 
     }
+
 }
