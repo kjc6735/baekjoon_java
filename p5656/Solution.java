@@ -46,18 +46,6 @@ class Solution {
         System.out.print(sb.toString());
     }
 
-    static void print(int[][] arr) {
-        StringBuilder sb = new StringBuilder();
-        System.out.println("--------------------------------");
-        for (int i = 0; i < H; i++) {
-            for (int k = 0; k < W; k++) {
-                sb.append(arr[i][k]).append(" ");
-            }
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
-    }
-
     static void select(int cnt, int seq[]) {
         if (cnt == N) {
 

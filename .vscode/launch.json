@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "p7465.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "b4485.Main",
+      "projectName": "baekjoon_java_fc43568b"
+    },
+    {
+      "type": "java",
       "name": "Test2",
       "request": "launch",
       "mainClass": "p5656.Test2",
