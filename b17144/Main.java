@@ -8,6 +8,7 @@ public class Main {
 
     static Queue<Pos> queue = new LinkedList<>();
     static int[][] map;
+    static int[][] diff;
     static ArrayList<Pos> cleaner = new ArrayList<>();
     static int dir[][][] = {
             {
@@ -28,6 +29,7 @@ public class Main {
         C = Integer.parseInt(str[1]);
         T = Integer.parseInt(str[2]);
         map = new int[R][C];
+        diff = new int[R][C];
         for (int i = 0; i < R; i++) {
             str = br.readLine().split(" ");
             for (int k = 0; k < C; k++) {
@@ -43,8 +45,8 @@ public class Main {
         }
 
         for (int i = 0; i < T; i++) {
-            if (i != 0)
-                addQueue();
+            // if (i != 0)
+            // addQueue();
             spread();
             for (int k = 0; k < 2; k++) {
                 wind(cleaner.get(k), dir[k], k == 0 ? 1 : -1);
@@ -85,32 +87,36 @@ public class Main {
     }
 
     static void spread() {
-        int size = queue.size();
-        Queue<Pos> add = new LinkedList<>();
-        for (int i = 0; i < size; i++) {
-            Pos curr = queue.poll();
-            ArrayList<Pos> tmp = new ArrayList<>();
-
-            for (int k = 0; k < 4; k++) {
-                int x = curr.x + dir[0][k][0];
-                int y = curr.y + dir[0][k][1];
-                if (!inRange(x, y) || map[x][y] == -1)
+        for (int i = 0; i < R; i++) {
+            for (int k = 0; k < C; k++) {
+                if (map[i][k] < 1)
                     continue;
-                tmp.add(new Pos(x, y));
-            }
+                int xx = i;
+                int yy = k;
+                int cnt = 0;
+                int amount = map[xx][yy] / 5;
 
-            int amount = curr.amount / 5;
-            int updateMyAmount = curr.amount - amount * tmp.size();
-            for (Pos t : tmp) {
-                // map[t.x][t.y] += amount;
-                add.add(new Pos(t.x, t.y, amount));
+                for (int a = 0; a < 4; a++) {
+                    int x = xx + dir[0][a][0];
+                    int y = yy + dir[0][a][1];
+                    if (!inRange(x, y) || map[x][y] == -1)
+                        continue;
+                    cnt++;
+                    diff[x][y] += amount;
+                }
+                map[xx][yy] = map[xx][yy] - (map[xx][yy] / 5) * cnt;
             }
-            map[curr.x][curr.y] = updateMyAmount;
         }
-        while (!add.isEmpty()) {
-            Pos curr = add.poll();
-            map[curr.x][curr.y] += curr.amount;
+        for (int i = 0; i < R; i++) {
+            for (int k = 0; k < C; k++) {
+                map[i][k] += diff[i][k];
+                diff[i][k] = 0;
+            }
         }
+        // while (!add.isEmpty()) {
+        // Pos curr = add.poll();
+        // map[curr.x][curr.y] += curr.amount;
+        // }
     }
 
     static void wind(Pos pos, int dir[][], int t) {
