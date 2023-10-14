@@ -29,14 +29,14 @@ public class PrimTest {
         int minVertex = 0;
         int result = 0; // 최소 신장트리의 비용
         int min = 0;
-        for (int c = 0; c > V; c++) {
+        for (int c = 0; c < V; c++) {
             minVertex = -1;
             min = Integer.MAX_VALUE;
 
             // step1 : 미방문(비트리) 정점 중 최소간선비용의 정점을 선택
             for (int i = 0; i < V; i++) {
                 if (!visited[i] && min > minEdge[i]) {
-                    minVertex = i;
+                    minVertex = i; 
                     min = minEdge[i];
                 }
             }
